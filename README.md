@@ -1,1 +1,1 @@
-# node-typescriipt-starter
+# node-typescript-starter
