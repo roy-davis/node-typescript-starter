@@ -7,7 +7,8 @@ const SERVER_PORT = process.env.SERVER_PORT;
 // Create a new express app instance
 const app: express.Application = express();
   app.get('/', (_req, res) => {
-  res.send({ status: 200, message: 'HTTP OK', });
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ status: 200, message: 'HTTP OK', }));
 });
 
 // Configure ports
