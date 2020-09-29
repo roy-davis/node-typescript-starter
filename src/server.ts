@@ -6,7 +6,9 @@ const SERVER_PORT = process.env.SERVER_PORT;
 
 // Create a new express app instance
 const app: express.Application = express();
-  app.get('/', (_req, res) => {
+
+// Routes
+app.get('/', (_req, res) => {
   res.json({ status: 200, message: 'HTTP OK', });
 });
 
