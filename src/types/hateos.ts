@@ -11,7 +11,7 @@ export interface HalResponse  {
     _embedded?: {};   
 }
 
-export type HalMeta = {
+export interface HalMeta {
     status?: Number;
     title?: string;
     host?: string;
