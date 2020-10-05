@@ -1,4 +1,5 @@
 import express = require('express');
+import { Hal } from './types/hateos';
 
 // Get variables config from env file
 require('dotenv').config()
@@ -8,8 +9,9 @@ const SERVER_PORT = process.env.SERVER_PORT;
 const app: express.Application = express();
 
 // Routes
-app.get('/', (_req, res) => {
-  res.json({ status: 200, message: 'HTTP OK', });
+app.get('/', (req, res) => {
+  const payload = { message: "Hypermedia response" };
+  res.json(Hal.create(req, payload));
 });
 
 // Configure ports
