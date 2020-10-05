@@ -8,6 +8,9 @@ export interface HalResponse  {
     _links: {
         self: HalLink;
     };
+    _meta: {
+        status: Number;
+    };
     _embedded?: {};   
 }
 
@@ -35,6 +38,6 @@ export class Hal {
             payload['_meta']['status'] = 200
 
 
-        return payload;
+        return payload as HalResponse;
     }
 }
