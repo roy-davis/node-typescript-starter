@@ -1,4 +1,4 @@
-interface HalLink {
+export interface HalLink {
     href: string;
 }
   
@@ -11,15 +11,30 @@ export interface HalResponse  {
     _embedded?: {};   
 }
 
-// static utility method to package up the response 
+export type HalMeta = {
+    status?: Number;
+    title?: string;
+    host?: string;
+    version?: string;
+}
+
 export class Hal {
-    static create (req: any, payload: any, embedded?: any, status?: Number) {
-        payload['_links'] = {  self: { href: `${req.protocol }://${req.get('host')}${req.originalUrl}`} };
+    static create (req: any, payload?: any, meta?: HalMeta, links?: any, embedded?: any) {
+        if (!payload)
+            payload = {};
+            
+        (links) ? payload['_links'] = links : payload['_links'] = {};
+        payload['_links']['self'] = { href: `${req.protocol }://${req.get('host')}${req.originalUrl}`};
+
         if (embedded)
             payload['_embedded'] = embedded;
-        if (!status)
-            status = 200
-        payload['_meta'] = { status: status } 
+        
+        (meta) ? payload['_meta'] = meta : payload['_meta'] = {}
+
+        if (!payload['_meta']['status'])
+            payload['_meta']['status'] = 200
+
+
         return payload;
     }
 }
