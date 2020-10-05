@@ -2,6 +2,13 @@ export interface HalLink {
     href: string;
 }
   
+export interface HalMeta {
+    status?: Number;
+    title?: string;
+    host?: string;
+    version?: string;
+}
+
 export interface HalResponse  {
     [key: string]: HalLink | HalLink[] | {} | undefined;
 
@@ -12,12 +19,6 @@ export interface HalResponse  {
     _embedded?: {};   
 }
 
-export interface HalMeta {
-    status?: Number;
-    title?: string;
-    host?: string;
-    version?: string;
-}
 
 export class Hal {
     static create (req: any, payload?: any, meta?: HalMeta, links?: any, embedded?: any) {
