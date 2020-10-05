@@ -8,9 +8,7 @@ export interface HalResponse  {
     _links: {
         self: HalLink;
     };
-    _meta: {
-        status: Number;
-    };
+    _meta: HalMeta;
     _embedded?: {};   
 }
 
