@@ -13,11 +13,6 @@ export interface HalMeta {
 
 // This is high level object send to a client
 export interface HalResponse  {
-
-    // We need this as appending to a JSON object can be unweildy
-    // Also it makes life easier
-    [key: string]: HalLink | HalLink[] | {} | undefined;
-
     _links: {
         self: HalLink;
     };
