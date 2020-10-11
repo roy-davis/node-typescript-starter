@@ -18,7 +18,7 @@ export interface HalMeta {
     status?: Number;
     title?: string;
     host?: string;
-    ver?: string;
+    version?: string;
     ts?: Number;
 }
 
@@ -54,7 +54,7 @@ response.hal = function(payload: any, meta?: HalMeta, links?: HalLink[], embedde
         if (embedded) payload['_embedded'] = embedded;
         
         const serverMeta:HalMeta = {
-            ver: config.version,
+            version: config.version,
             host: config.host_id,
             ts: + new Date()
         }
