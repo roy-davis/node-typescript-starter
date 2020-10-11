@@ -19,6 +19,7 @@ export interface HalMeta {
     title?: string;
     host?: string;
     version?: string;
+    ts?: Number;
 }
 
 // This is high level object send to a client
@@ -54,7 +55,8 @@ response.hal = function(payload: any, meta?: HalMeta, links?: HalLink[], embedde
         
         const serverMeta:HalMeta = {
             version: config.version,
-            host: config.host_id
+            host: config.host_id,
+            ts: Date.now()
         }
 
         // set our metadata 
